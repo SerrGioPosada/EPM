@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css" fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+    <padding><Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/></padding>
+
+    <VBox spacing="5.0">
+        <Label text="Módulo de Gestión de Proyectos y Planeación" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Control de Avance y Reporte" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <GridPane hgap="20.0" vgap="20.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="33.33"/>
+            <ColumnConstraints percentWidth="33.33"/>
+            <ColumnConstraints percentWidth="33.33"/>
+        </columnConstraints>
+        <VBox spacing="10.0" GridPane.columnIndex="0" alignment="CENTER" styleClass="stat-card">
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+            <Label text="Avance General" styleClass="stat-label"/>
+            <Label text="75%" styleClass="stat-value" style="-fx-text-fill: #66BB6A;"/>
+        </VBox>
+        <VBox spacing="10.0" GridPane.columnIndex="1" alignment="CENTER" styleClass="stat-card">
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+            <Label text="Desviación Cronograma" styleClass="stat-label"/>
+            <Label text="+3 Días" styleClass="stat-value" style="-fx-text-fill: #FFA726;"/>
+        </VBox>
+        <VBox spacing="10.0" GridPane.columnIndex="2" alignment="CENTER" styleClass="stat-card">
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+            <Label text="Cumplimiento" styleClass="stat-label"/>
+            <Label text="92%" styleClass="stat-value" style="-fx-text-fill: #43A047;"/>
+        </VBox>
+    </GridPane>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Cronograma del Proyecto (Gantt)" styleClass="section-title"/>
+        <Separator/>
+        <javafx.scene.chart.BarChart fx:id="chartGantt" prefHeight="350" legendVisible="true"
+                                      style="-fx-background-color: white; -fx-background-radius: 8;">
+            <xAxis>
+                <javafx.scene.chart.CategoryAxis label="Tarea del Proyecto" side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <javafx.scene.chart.NumberAxis label="Porcentaje de Avance %" side="LEFT"/>
+            </yAxis>
+        </javafx.scene.chart.BarChart>
+    </VBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Registro de Avance por Tarea" styleClass="section-title"/>
+        <Separator/>
+        <GridPane hgap="20.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0"/>
+                <ColumnConstraints percentWidth="50.0"/>
+            </columnConstraints>
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Tarea *" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbTask" promptText="Seleccione tarea" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Diseño Estructural"/>
+                            <String fx:value="Excavación y Cimientos"/>
+                            <String fx:value="Instalación Eléctrica"/>
+                            <String fx:value="Pruebas y Comisionamiento"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Porcentaje de Avance *" styleClass="detail-label"/>
+                <TextField fx:id="txtProgress" promptText="0-100%" styleClass="form-field"/>
+            </VBox>
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                <Label text="Observaciones" styleClass="detail-label"/>
+                <TextArea fx:id="txtObservations" promptText="Comentarios sobre el avance..."
+                          prefRowCount="3" wrapText="true" styleClass="form-field"/>
+            </VBox>
+        </GridPane>
+        <HBox spacing="15.0" alignment="CENTER">
+            <Button text="Registrar Avance" styleClass="btn-primary">
+                <padding><Insets top="12.0" right="35.0" bottom="12.0" left="35.0"/></padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

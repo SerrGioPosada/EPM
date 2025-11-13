@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css" fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+    <padding><Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/></padding>
+
+    <VBox spacing="5.0">
+        <Label text="Módulo Comercial y de Clientes" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Gestión de PQRS (Administrador)" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <HBox spacing="15.0" alignment="CENTER_LEFT" styleClass="filter-section">
+        <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+        <VBox spacing="5.0">
+            <Label text="Tipo de PQR" styleClass="detail-label"/>
+            <ComboBox fx:id="cmbPQRType" promptText="Todos" styleClass="form-combo" prefWidth="150">
+                <items>
+                    <javafx.collections.FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Todos"/>
+                        <String fx:value="Petición"/>
+                        <String fx:value="Queja"/>
+                        <String fx:value="Reclamo"/>
+                        <String fx:value="Sugerencia"/>
+                    </javafx.collections.FXCollections>
+                </items>
+            </ComboBox>
+        </VBox>
+        <VBox spacing="5.0">
+            <Label text="Estado" styleClass="detail-label"/>
+            <ComboBox fx:id="cmbStatus" promptText="Seleccione estado" styleClass="form-combo" prefWidth="150">
+                <items>
+                    <javafx.collections.FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Abierto"/>
+                        <String fx:value="En Proceso"/>
+                        <String fx:value="Cerrado"/>
+                        <String fx:value="Todos"/>
+                    </javafx.collections.FXCollections>
+                </items>
+            </ComboBox>
+        </VBox>
+        <Button text="Filtrar" styleClass="btn-primary" prefHeight="40">
+            <padding><Insets top="10.0" right="30.0" bottom="10.0" left="30.0"/></padding>
+        </Button>
+    </HBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="PQRS Abiertas" styleClass="section-title"/>
+        <TableView fx:id="tblPQRS" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <placeholder><Label text="No hay PQRS registradas" styleClass="text-muted"/></placeholder>
+        </TableView>
+    </VBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Detalle de PQR Seleccionada" styleClass="section-title"/>
+        <Separator/>
+
+        <GridPane hgap="30.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0"/>
+                <ColumnConstraints percentWidth="50.0"/>
+            </columnConstraints>
+
+            <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Radicado:" styleClass="detail-label"/>
+                <Label fx:id="lblRadicado" text="PQR-2025-11-0001234" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Estado Actual:" styleClass="detail-label"/>
+                <Label fx:id="lblStatus" text="Abierto" styleClass="badge-active"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                <Label text="Historial de Comentarios/Interacciones:" styleClass="detail-label"/>
+                <TextArea fx:id="txtHistory" wrapText="true" editable="false" prefRowCount="6"
+                          styleClass="form-field"
+                          text="[10/Nov/2025 14:30] Cliente: Se registró la PQR por falta de suministro.&#10;[10/Nov/2025 15:00] Sistema: PQR asignada a Ing. Carlos Martínez.&#10;[11/Nov/2025 09:15] Ing. Martínez: Se programó visita técnica para el 12/Nov."/>
+            </VBox>
+        </GridPane>
+
+        <Separator/>
+
+        <HBox spacing="15.0" alignment="CENTER">
+            <VBox spacing="5.0">
+                <Label text="Asignar a:" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbAssignTo" promptText="Seleccione responsable" styleClass="form-combo" prefWidth="250">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Ing. Carlos Martínez"/>
+                            <String fx:value="Ing. Ana López"/>
+                            <String fx:value="Téc. Juan Pérez"/>
+                            <String fx:value="Cuadrilla Norte"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label text="Cambiar Estado:" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbChangeStatus" promptText="Nuevo estado" styleClass="form-combo" prefWidth="200">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="En Proceso"/>
+                            <String fx:value="Resuelto"/>
+                            <String fx:value="Cerrado"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <Button text="Actualizar" styleClass="btn-success" prefHeight="40">
+                <padding><Insets top="10.0" right="30.0" bottom="10.0" left="30.0"/></padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

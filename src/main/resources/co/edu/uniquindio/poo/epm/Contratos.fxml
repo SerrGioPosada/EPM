@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css" fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+    <padding><Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/></padding>
+
+    <VBox spacing="5.0">
+        <Label text="Módulo Comercial y de Clientes" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Generación de Contratos y Facturación" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Nuevo Contrato" styleClass="section-title"/>
+        <Separator/>
+        <GridPane hgap="20.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0"/>
+                <ColumnConstraints percentWidth="50.0"/>
+            </columnConstraints>
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Cliente *" styleClass="detail-label"/>
+                <TextField fx:id="txtClient" promptText="Buscar cliente por cédula o nombre" styleClass="form-field"/>
+            </VBox>
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Servicio *" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbService" promptText="Seleccione servicio" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Energía Eléctrica"/>
+                            <String fx:value="Agua Potable"/>
+                            <String fx:value="Gas Natural"/>
+                            <String fx:value="Alcantarillado"/>
+                            <String fx:value="Aseo"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                <Label text="Condiciones de Servicio *" styleClass="detail-label"/>
+                <TextArea fx:id="txtConditions" promptText="Especifique las condiciones del servicio contratado..."
+                          prefRowCount="4" wrapText="true" styleClass="form-field"/>
+            </VBox>
+        </GridPane>
+        <HBox spacing="15.0" alignment="CENTER">
+            <Button text="Crear Nuevo Contrato" styleClass="btn-primary">
+                <padding><Insets top="12.0" right="35.0" bottom="12.0" left="35.0"/></padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Historial de Facturación por Cliente" styleClass="section-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Emitir Nueva Factura" styleClass="btn-success">
+                <padding><Insets top="8.0" right="20.0" bottom="8.0" left="20.0"/></padding>
+            </Button>
+        </HBox>
+        <TableView fx:id="tblBilling" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <columns>
+                <TableColumn text="Fecha" prefWidth="100" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Servicio" prefWidth="120" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Período" prefWidth="100" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Consumo" prefWidth="120" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Valor" prefWidth="120" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Estado" prefWidth="100" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Fecha Pago" prefWidth="120" style="-fx-alignment: CENTER-LEFT;" />
+            </columns>
+            <placeholder><Label text="No hay facturas registradas" styleClass="text-muted"/></placeholder>
+        </TableView>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

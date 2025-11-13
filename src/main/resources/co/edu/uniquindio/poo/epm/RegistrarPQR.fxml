@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css"
+            fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+
+    <padding>
+        <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+    </padding>
+
+    <!-- Header with Module and View Name -->
+    <VBox spacing="5.0">
+        <Label text="Módulo Comercial y de Clientes" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Registro de PQR" styleClass="page-title" style="-fx-font-size: 28px;"/>
+        <Label text="Peticiones, Quejas y Reclamos" style="-fx-text-fill: #6c757d; -fx-font-size: 14px;"/>
+    </VBox>
+
+    <!-- Customer Search -->
+    <VBox spacing="15.0" styleClass="filter-section">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <Label text="Buscar Cliente" styleClass="section-title" style="-fx-font-size: 16px;"/>
+
+        <HBox spacing="15.0" alignment="CENTER_LEFT">
+            <VBox spacing="5.0">
+                <Label text="Número de Contrato o Cédula" styleClass="detail-label"/>
+                <TextField fx:id="txtCustomerSearch" promptText="Ingrese número de contrato o cédula"
+                           styleClass="search-field" prefWidth="350"/>
+            </VBox>
+
+            <Button text="Buscar Cliente" styleClass="btn-primary" prefHeight="40">
+                <padding>
+                    <Insets top="10.0" right="25.0" bottom="10.0" left="25.0"/>
+                </padding>
+            </Button>
+        </HBox>
+
+        <!-- Customer Info Display -->
+        <HBox spacing="15.0" alignment="CENTER_LEFT" style="-fx-background-color: #E8F5E9; -fx-padding: 15; -fx-background-radius: 8;">
+            <Label text="Cliente:" styleClass="detail-label"/>
+            <Label fx:id="lblCustomerInfo" text="María José Rodríguez - CC 43.987.654" styleClass="detail-value"/>
+            <Separator orientation="VERTICAL"/>
+            <Label text="Dirección:" styleClass="detail-label"/>
+            <Label fx:id="lblAddressInfo" text="Calle 50 # 45-32, Barrio Laureles" styleClass="detail-value"/>
+        </HBox>
+    </VBox>
+
+    <!-- PQR Form -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <Label text="Información de la PQR" styleClass="section-title"/>
+
+        <Separator/>
+
+        <GridPane hgap="20.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0"/>
+                <ColumnConstraints percentWidth="50.0"/>
+            </columnConstraints>
+
+            <!-- Row 1 -->
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Tipo de PQR *" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbPQRType" promptText="Seleccione tipo" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Petición"/>
+                            <String fx:value="Queja"/>
+                            <String fx:value="Reclamo"/>
+                            <String fx:value="Sugerencia"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Servicio Afectado *" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbService" promptText="Seleccione servicio" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Energía"/>
+                            <String fx:value="Agua"/>
+                            <String fx:value="Gas"/>
+                            <String fx:value="Alcantarillado"/>
+                            <String fx:value="Aseo"/>
+                            <String fx:value="Otro"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <!-- Row 2 -->
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label text="Motivo *" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbReason" promptText="Seleccione motivo" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Falta de suministro"/>
+                            <String fx:value="Daño en medidor"/>
+                            <String fx:value="Cobro incorrecto"/>
+                            <String fx:value="Mala calidad del servicio"/>
+                            <String fx:value="Atención al cliente"/>
+                            <String fx:value="Daño en la red"/>
+                            <String fx:value="Otro"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Label text="Prioridad" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbPriority" promptText="Seleccione prioridad" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Alta"/>
+                            <String fx:value="Media"/>
+                            <String fx:value="Baja"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <!-- Row 3 -->
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                <Label text="Descripción del Caso *" styleClass="detail-label"/>
+                <TextArea fx:id="txtDescription" promptText="Describa detalladamente el caso..."
+                          prefRowCount="6" wrapText="true" styleClass="form-field"/>
+                <Label text="Caracteres mínimos: 50" style="-fx-text-fill: #6c757d; -fx-font-size: 11px;"/>
+            </VBox>
+
+            <!-- Row 4 -->
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <Label text="Teléfono de Contacto" styleClass="detail-label"/>
+                <TextField fx:id="txtContactPhone" promptText="Ej: 321 456 7890" styleClass="form-field"/>
+            </VBox>
+
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Label text="Correo Electrónico" styleClass="detail-label"/>
+                <TextField fx:id="txtContactEmail" promptText="correo@ejemplo.com" styleClass="form-field"/>
+            </VBox>
+        </GridPane>
+
+        <Separator/>
+
+        <!-- Radicado Info -->
+        <HBox spacing="15.0" alignment="CENTER" style="-fx-background-color: #FFF3E0; -fx-padding: 20; -fx-background-radius: 8;">
+            <VBox alignment="CENTER" spacing="5.0">
+                <Label text="Número de Radicado" style="-fx-text-fill: #E65100; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+                <Label fx:id="lblRadicado" text="PQR-2025-11-0001234" style="-fx-text-fill: #E65100; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <Label text="Se generará automáticamente al crear la PQR" style="-fx-text-fill: #6c757d; -fx-font-size: 11px;"/>
+            </VBox>
+        </HBox>
+
+        <!-- Action Buttons -->
+        <HBox spacing="15.0" alignment="CENTER">
+            <Button text="Generar Radicado y Guardar" styleClass="btn-primary">
+                <padding>
+                    <Insets top="12.0" right="35.0" bottom="12.0" left="35.0"/>
+                </padding>
+            </Button>
+
+            <Button text="Limpiar Formulario" styleClass="btn-secondary">
+                <padding>
+                    <Insets top="12.0" right="35.0" bottom="12.0" left="35.0"/>
+                </padding>
+            </Button>
+
+            <Button text="Imprimir Radicado" styleClass="btn-info">
+                <padding>
+                    <Insets top="12.0" right="35.0" bottom="12.0" left="35.0"/>
+                </padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+    <!-- Recent PQRs -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <Label text="PQR Recientes del Cliente" styleClass="section-title"/>
+
+        <TableView fx:id="tblRecentPQR" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <columns>
+                <TableColumn text="Radicado" prefWidth="130" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Fecha" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Tipo" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Servicio" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Motivo" prefWidth="180" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Estado" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Fecha Respuesta" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+            </columns>
+
+            <placeholder>
+                <Label text="No hay PQR recientes para este cliente" styleClass="text-muted"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

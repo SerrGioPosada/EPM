@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css" fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+    <padding><Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/></padding>
+
+    <VBox spacing="5.0">
+        <Label text="Módulo de Gestión del Talento Humano" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Reporte de RRHH y Capacitación" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <GridPane hgap="20.0" vgap="20.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="33.33"/><ColumnConstraints percentWidth="33.33"/><ColumnConstraints percentWidth="33.33"/>
+        </columnConstraints>
+        <VBox spacing="10.0" GridPane.columnIndex="0" alignment="CENTER" styleClass="stat-card">
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+            <Label text="Total Empleados" styleClass="stat-label"/>
+            <Label text="1,245" styleClass="stat-value"/>
+        </VBox>
+        <VBox spacing="10.0" GridPane.columnIndex="1" alignment="CENTER" styleClass="stat-card">
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+            <Label text="Tasa de Rotación" styleClass="stat-label"/>
+            <Label text="3.2%" styleClass="stat-value" style="-fx-text-fill: #FFA726;"/>
+        </VBox>
+        <VBox spacing="10.0" GridPane.columnIndex="2" alignment="CENTER" styleClass="stat-card">
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+            <Label text="Promedio Desempeño" styleClass="stat-label"/>
+            <Label text="4.2/5.0" styleClass="stat-value" style="-fx-text-fill: #66BB6A;"/>
+        </VBox>
+    </GridPane>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Horas de Capacitación por Área" styleClass="section-title"/>
+        <Separator/>
+        <javafx.scene.chart.BarChart fx:id="chartCapacitacion" prefHeight="350" legendVisible="true"
+                                      style="-fx-background-color: white; -fx-background-radius: 8;">
+            <xAxis>
+                <javafx.scene.chart.CategoryAxis label="Departamento" side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <javafx.scene.chart.NumberAxis label="Horas de Capacitación" side="LEFT"/>
+            </yAxis>
+        </javafx.scene.chart.BarChart>
+    </VBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Resumen por Departamento" styleClass="section-title"/>
+        <TableView fx:id="tblDepartments" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <placeholder><Label text="No hay datos disponibles" styleClass="text-muted"/></placeholder>
+        </TableView>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,289 @@
+package co.edu.uniquindio.poo.epm;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.animation.FadeTransition;
+import javafx.util.Duration;
+
+import java.io.IOException;
+
+/**
+ * Controller básico para navegación entre vistas de EPM
+ * Este controller maneja la navegación simple sin validaciones
+ */
+public class HelloController {
+
+    // Singleton instance para compartir entre vistas
+    private static HelloController instance;
+
+    // ===== Index.fxml Components =====
+    @FXML
+    private StackPane paneIndex;
+
+    @FXML
+    private BorderPane rootPane;
+
+    @FXML
+    private Button btnNavLogin;
+
+    @FXML
+    private Button btnNavDashboard;
+
+    // ===== Login.fxml Components =====
+    @FXML
+    private TextField txtEmail;
+
+    @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private TextField txtPasswordVisible;
+
+    @FXML
+    private CheckBox chkKeepSignedIn;
+
+    @FXML
+    private Button btnLogin;
+
+    @FXML
+    private Label lblError;
+
+    @FXML
+    private Label lblForgotPassword;
+
+    @FXML
+    private Label lblEmailFloat;
+
+    @FXML
+    private Label lblPasswordFloat;
+
+    // ===== Sidebar.fxml Components =====
+    @FXML
+    private Button btnDashboard;
+
+    @FXML
+    private Button btnColillaPago;
+
+    @FXML
+    private Button btnVacaciones;
+
+    @FXML
+    private Button btnVista360;
+
+    @FXML
+    private Button btnPQR;
+
+    @FXML
+    private Button btnActivos;
+
+    @FXML
+    private Button btnLogout;
+
+    @FXML
+    private Label lblUserName;
+
+    /**
+     * Inicialización del controller
+     */
+    @FXML
+    public void initialize() {
+        // Establecer esta instancia como la instancia singleton si tiene el paneIndex
+        if (paneIndex != null) {
+            instance = this;
+            showSidebar(false); // Ocultar sidebar en el login
+            loadView("Login.fxml");
+        }
+    }
+
+    /**
+     * Obtener la instancia principal del controller
+     */
+    public static HelloController getInstance() {
+        return instance;
+    }
+
+    /**
+     * Maneja el evento de login (sin validación, solo cambia la vista)
+     */
+    @FXML
+    public void handleLogin(ActionEvent event) {
+        // Navegación simple: al hacer login, mostrar Dashboard
+        showSidebar(true);
+        loadView("Dashboard.fxml");
+    }
+
+    /**
+     * Muestra la vista de Login
+     */
+    @FXML
+    public void handleShowLogin(ActionEvent event) {
+        showSidebar(false);
+        loadView("Login.fxml");
+    }
+
+    /**
+     * Muestra el Dashboard
+     */
+    @FXML
+    public void handleShowDashboard(ActionEvent event) {
+        showSidebar(true);
+        loadView("Dashboard.fxml");
+    }
+
+    /**
+     * Muestra la vista de Consultar Colilla de Pago
+     */
+    @FXML
+    public void handleShowColillaPago(ActionEvent event) {
+        showSidebar(true);
+        loadView("ConsultarColillaPago.fxml");
+    }
+
+    /**
+     * Sobrecarga para MouseEvent
+     */
+    @FXML
+    public void handleShowColillaPago(MouseEvent event) {
+        showSidebar(true);
+        loadView("ConsultarColillaPago.fxml");
+    }
+
+    /**
+     * Muestra la vista de Solicitar Vacaciones
+     */
+    @FXML
+    public void handleShowVacaciones(ActionEvent event) {
+        showSidebar(true);
+        loadView("SolicitarVacaciones.fxml");
+    }
+
+    /**
+     * Sobrecarga para MouseEvent
+     */
+    @FXML
+    public void handleShowVacaciones(MouseEvent event) {
+        showSidebar(true);
+        loadView("SolicitarVacaciones.fxml");
+    }
+
+    /**
+     * Muestra la Vista 360 del Cliente
+     */
+    @FXML
+    public void handleShowVista360(ActionEvent event) {
+        showSidebar(true);
+        loadView("Vista360Cliente.fxml");
+    }
+
+    /**
+     * Muestra la vista de Registrar PQR
+     */
+    @FXML
+    public void handleShowPQR(ActionEvent event) {
+        showSidebar(true);
+        loadView("RegistrarPQR.fxml");
+    }
+
+    /**
+     * Muestra la Ficha de Activo
+     */
+    @FXML
+    public void handleShowFichaActivo(ActionEvent event) {
+        showSidebar(true);
+        loadView("FichaActivo.fxml");
+    }
+
+    /**
+     * Controla la visibilidad del sidebar
+     * @param show true para mostrar el sidebar, false para ocultarlo
+     */
+    private void showSidebar(boolean show) {
+        BorderPane targetRoot = (rootPane != null) ? rootPane : (instance != null ? instance.rootPane : null);
+
+        if (targetRoot != null) {
+            if (show) {
+                // Mostrar el sidebar si no está visible
+                if (targetRoot.getLeft() == null) {
+                    try {
+                        System.out.println("Cargando Sidebar...");
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Sidebar.fxml"));
+                        Node sidebar = loader.load();
+                        targetRoot.setLeft(sidebar);
+                        System.out.println("Sidebar cargado exitosamente");
+                    } catch (IOException e) {
+                        System.err.println("Error al cargar el sidebar:");
+                        e.printStackTrace();
+                    }
+                } else {
+                    System.out.println("El sidebar ya está visible");
+                }
+            } else {
+                // Ocultar el sidebar
+                System.out.println("Ocultando sidebar...");
+                targetRoot.setLeft(null);
+            }
+        } else {
+            System.err.println("Error: rootPane es null, no se puede controlar el sidebar");
+        }
+    }
+
+    /**
+     * Método genérico para cargar vistas con transición fade
+     *
+     * @param fxmlFile Nombre del archivo FXML a cargar
+     */
+    private void loadView(String fxmlFile) {
+        // Obtener el paneIndex de la instancia principal si no está disponible en esta instancia
+        StackPane targetPane = (paneIndex != null) ? paneIndex : (instance != null ? instance.paneIndex : null);
+
+        if (targetPane == null) {
+            System.err.println("Error: No hay paneIndex disponible para cargar la vista");
+            return;
+        }
+
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Node newView = loader.load();
+
+            // Si hay contenido anterior, hacer fade out
+            if (!targetPane.getChildren().isEmpty()) {
+                Node oldView = targetPane.getChildren().get(0);
+
+                FadeTransition fadeOut = new FadeTransition(Duration.millis(150), oldView);
+                fadeOut.setFromValue(1.0);
+                fadeOut.setToValue(0.0);
+                fadeOut.setOnFinished(e -> {
+                    targetPane.getChildren().clear();
+                    targetPane.getChildren().add(newView);
+
+                    // Fade in para la nueva vista
+                    FadeTransition fadeIn = new FadeTransition(Duration.millis(200), newView);
+                    fadeIn.setFromValue(0.0);
+                    fadeIn.setToValue(1.0);
+                    fadeIn.play();
+                });
+                fadeOut.play();
+            } else {
+                // Si no hay contenido anterior, solo agregar
+                targetPane.getChildren().add(newView);
+
+                FadeTransition fadeIn = new FadeTransition(Duration.millis(200), newView);
+                fadeIn.setFromValue(0.0);
+                fadeIn.setToValue(1.0);
+                fadeIn.play();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error al cargar la vista: " + fxmlFile);
+        }
+    }
+}

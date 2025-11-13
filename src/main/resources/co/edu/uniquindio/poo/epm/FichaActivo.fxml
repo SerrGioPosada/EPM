@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css"
+            fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+
+    <padding>
+        <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+    </padding>
+
+    <!-- Header with Module and View Name -->
+    <VBox spacing="5.0">
+        <Label text="Módulo de Gestión Financiera y Contable" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Ficha de Activo" styleClass="page-title" style="-fx-font-size: 28px;"/>
+        <Label text="Gestión de Activos Físicos - IBM MAXIMO" style="-fx-text-fill: #6c757d; -fx-font-size: 14px;"/>
+    </VBox>
+
+    <!-- Search Section -->
+    <HBox spacing="15.0" alignment="CENTER_LEFT" styleClass="filter-section">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <VBox spacing="5.0">
+            <Label text="Buscar Activo" styleClass="detail-label"/>
+            <TextField fx:id="txtAssetSearch" promptText="Código de activo o nombre"
+                       styleClass="search-field" prefWidth="350"/>
+        </VBox>
+
+        <Button text="Buscar" styleClass="btn-primary" prefHeight="40">
+            <padding>
+                <Insets top="10.0" right="30.0" bottom="10.0" left="30.0"/>
+            </padding>
+        </Button>
+
+        <Region/>
+
+        <Button text="Nuevo Activo" styleClass="btn-success" prefHeight="40">
+            <padding>
+                <Insets top="10.0" right="25.0" bottom="10.0" left="25.0"/>
+            </padding>
+        </Button>
+    </HBox>
+
+    <!-- Asset Information -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <Label text="Información del Activo" styleClass="section-title"/>
+            <Region/>
+            <Label text="OPERATIVO" styleClass="badge-active" style="-fx-font-size: 14px; -fx-padding: 8 15;"/>
+        </HBox>
+
+        <Separator/>
+
+        <GridPane hgap="30.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+            </columnConstraints>
+
+            <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Código del Activo" styleClass="detail-label"/>
+                <Label fx:id="lblAssetCode" text="TRF-MED-001-2023" styleClass="detail-value" style="-fx-font-weight: bold;"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Nombre del Activo" styleClass="detail-label"/>
+                <Label fx:id="lblAssetName" text="Transformador Principal" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <Label text="Tipo de Activo" styleClass="detail-label"/>
+                <Label fx:id="lblAssetType" text="Equipos de Energía" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                <Label text="Categoría" styleClass="detail-label"/>
+                <Label fx:id="lblCategory" text="Crítico" styleClass="detail-value" style="-fx-text-fill: #dc3545; -fx-font-weight: bold;"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                <Label text="Ubicación" styleClass="detail-label"/>
+                <Label fx:id="lblLocation" text="Subestación La Alpujarra - Sector Norte" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <Label text="Fecha de Instalación" styleClass="detail-label"/>
+                <Label fx:id="lblInstallDate" text="15/Marzo/2023" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <Label text="Vida Útil Restante" styleClass="detail-label"/>
+                <Label fx:id="lblLifespan" text="22 años" styleClass="detail-value" style="-fx-text-fill: #43A047;"/>
+            </VBox>
+        </GridPane>
+
+        <Separator/>
+
+        <!-- Technical Specs -->
+        <Label text="Especificaciones Técnicas" styleClass="section-title" style="-fx-font-size: 16px;"/>
+
+        <GridPane hgap="30.0" vgap="12.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+            </columnConstraints>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Fabricante:" styleClass="detail-label"/>
+                <Label text="ABB" styleClass="detail-value"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Modelo:" styleClass="detail-label"/>
+                <Label text="TXD-500-2023" styleClass="detail-value"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <Label text="Capacidad:" styleClass="detail-label"/>
+                <Label text="500 kVA" styleClass="detail-value"/>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                <Label text="Voltaje:" styleClass="detail-label"/>
+                <Label text="13.2 kV" styleClass="detail-value"/>
+            </HBox>
+        </GridPane>
+    </VBox>
+
+    <!-- Asset Status & Maintenance -->
+    <GridPane hgap="20.0" vgap="20.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="50.0"/>
+            <ColumnConstraints percentWidth="50.0"/>
+        </columnConstraints>
+
+        <!-- Current Status -->
+        <VBox spacing="15.0" GridPane.columnIndex="0" styleClass="card-base" style="-fx-background-color: #E8F5E9;">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+
+            <Label text="Estado Actual" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+
+            <VBox spacing="10.0">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Estado Operativo:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="En Funcionamiento" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Última Inspección:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="10/Nov/2025" styleClass="detail-value"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Próximo Mantenimiento:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="15/Dic/2025" styleClass="detail-value" style="-fx-text-fill: #FFA726; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Responsable:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Ing. Carlos Gómez" styleClass="detail-value"/>
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <!-- Performance Indicators -->
+        <VBox spacing="15.0" GridPane.columnIndex="1" styleClass="card-base" style="-fx-background-color: #E1F5FE;">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+
+            <Label text="Indicadores de Desempeño" style="-fx-text-fill: #01579B; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+
+            <VBox spacing="10.0">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Eficiencia:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="98.5%" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Horas de Operación:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="6,245 hrs" styleClass="detail-value"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Fallas en el Año:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="0" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Disponibilidad:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="99.9%" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </GridPane>
+
+    <!-- Maintenance History -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Historial de Mantenimiento" styleClass="section-title"/>
+            <Region/>
+            <Button text="Crear Orden de Trabajo" styleClass="btn-success">
+                <padding>
+                    <Insets top="8.0" right="20.0" bottom="8.0" left="20.0"/>
+                </padding>
+            </Button>
+        </HBox>
+
+        <TableView fx:id="tblMaintenanceHistory" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <columns>
+                <TableColumn text="Orden" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Fecha" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Tipo" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Descripción" prefWidth="250" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Responsable" prefWidth="150" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Estado" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Costo" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+            </columns>
+            <placeholder>
+                <Label text="No hay registros de mantenimiento" styleClass="text-muted"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+
+    <!-- Work Order Section -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <Label text="Crear Orden de Trabajo" styleClass="section-title"/>
+
+        <Separator/>
+
+        <GridPane hgap="20.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0"/>
+                <ColumnConstraints percentWidth="50.0"/>
+            </columnConstraints>
+
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Tipo de Mantenimiento *" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbMaintenanceType" promptText="Seleccione tipo" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Preventivo"/>
+                            <String fx:value="Correctivo"/>
+                            <String fx:value="Predictivo"/>
+                            <String fx:value="Mejora"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Prioridad *" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbPriority" promptText="Seleccione prioridad" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Alta"/>
+                            <String fx:value="Media"/>
+                            <String fx:value="Baja"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                <Label text="Descripción del Trabajo *" styleClass="detail-label"/>
+                <TextArea fx:id="txtWorkDescription" promptText="Describa el trabajo a realizar..."
+                          prefRowCount="4" wrapText="true" styleClass="form-field"/>
+            </VBox>
+
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <Label text="Asignar a (Cuadrilla/Técnico) *" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbAssignee" promptText="Seleccione responsable" styleClass="form-combo" prefWidth="350">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Cuadrilla A - Ing. Carlos Gómez"/>
+                            <String fx:value="Cuadrilla B - Ing. Ana Martínez"/>
+                            <String fx:value="Técnico Juan Pérez"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Label text="Fecha Programada *" styleClass="detail-label"/>
+                <DatePicker fx:id="dtpScheduledDate" promptText="Seleccione fecha" styleClass="form-date" prefWidth="350"/>
+            </VBox>
+        </GridPane>
+
+        <HBox spacing="15.0" alignment="CENTER">
+            <Button text="Crear Orden de Trabajo" styleClass="btn-primary">
+                <padding>
+                    <Insets top="12.0" right="35.0" bottom="12.0" left="35.0"/>
+                </padding>
+            </Button>
+
+            <Button text="Cancelar" styleClass="btn-secondary">
+                <padding>
+                    <Insets top="12.0" right="35.0" bottom="12.0" left="35.0"/>
+                </padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

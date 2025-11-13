@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css" fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+    <padding><Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/></padding>
+
+    <VBox spacing="5.0">
+        <Label text="Módulo de Gestión de Proyectos y Planeación" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Creación y Asignación de Recursos" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Crear Nuevo Proyecto" styleClass="section-title"/>
+        <Separator/>
+        <GridPane hgap="20.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0"/>
+                <ColumnConstraints percentWidth="50.0"/>
+            </columnConstraints>
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Nombre del Proyecto *" styleClass="detail-label"/>
+                <TextField fx:id="txtProjectName" promptText="Ingrese nombre del proyecto" styleClass="form-field"/>
+            </VBox>
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Presupuesto Aprobado *" styleClass="detail-label"/>
+                <TextField fx:id="txtBudget" promptText="0.00" styleClass="form-field"/>
+            </VBox>
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label text="Fecha Inicio *" styleClass="detail-label"/>
+                <DatePicker fx:id="dtpStart" promptText="Seleccione fecha" styleClass="form-date" prefWidth="350"/>
+            </VBox>
+            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Label text="Fecha Fin *" styleClass="detail-label"/>
+                <DatePicker fx:id="dtpEnd" promptText="Seleccione fecha" styleClass="form-date" prefWidth="350"/>
+            </VBox>
+            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                <Label text="Justificación del Proyecto *" styleClass="detail-label"/>
+                <TextArea fx:id="txtJustification" promptText="Describa la justificación y objetivos del proyecto..."
+                          prefRowCount="4" wrapText="true" styleClass="form-field"/>
+            </VBox>
+        </GridPane>
+        <HBox spacing="15.0" alignment="CENTER">
+            <Button text="Crear Proyecto" styleClass="btn-primary">
+                <padding><Insets top="12.0" right="35.0" bottom="12.0" left="35.0"/></padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Asignación de Recursos" styleClass="section-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Asignar Recursos" styleClass="btn-success">
+                <padding><Insets top="8.0" right="20.0" bottom="8.0" left="20.0"/></padding>
+            </Button>
+        </HBox>
+        <TableView fx:id="tblResources" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <columns>
+                <TableColumn text="Tipo" prefWidth="120" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Recurso" prefWidth="200" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Cantidad/Horas" prefWidth="120" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Costo Estimado" prefWidth="130" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Estado" prefWidth="100" style="-fx-alignment: CENTER-LEFT;" />
+                <TableColumn text="Fecha Asignación" prefWidth="140" style="-fx-alignment: CENTER-LEFT;" />
+            </columns>
+            <placeholder><Label text="No hay recursos asignados" styleClass="text-muted"/></placeholder>
+        </TableView>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

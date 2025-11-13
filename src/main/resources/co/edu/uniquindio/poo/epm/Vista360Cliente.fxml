@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css"
+            fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+
+    <padding>
+        <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+    </padding>
+
+    <!-- Header with Module and View Name -->
+    <VBox spacing="5.0">
+        <Label text="Módulo Comercial y de Clientes" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Vista 360° del Cliente" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <!-- Search Section -->
+    <HBox spacing="15.0" alignment="CENTER_LEFT" styleClass="filter-section">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <VBox spacing="5.0">
+            <Label text="Buscar Cliente" styleClass="detail-label"/>
+            <TextField fx:id="txtSearch" promptText="Número de contrato, cédula o dirección" styleClass="search-field" prefWidth="400"/>
+        </VBox>
+
+        <Button text="Buscar" styleClass="btn-primary" prefHeight="40">
+            <padding>
+                <Insets top="10.0" right="30.0" bottom="10.0" left="30.0"/>
+            </padding>
+        </Button>
+
+        <Region/>
+
+        <Button text="Limpiar" styleClass="btn-secondary" prefHeight="40">
+            <padding>
+                <Insets top="10.0" right="25.0" bottom="10.0" left="25.0"/>
+            </padding>
+        </Button>
+    </HBox>
+
+    <!-- Customer Information -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Datos del Cliente" styleClass="section-title"/>
+            <Region/>
+            <Label text="Cliente Activo" styleClass="badge-active"/>
+        </HBox>
+
+        <Separator/>
+
+        <GridPane hgap="30.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+            </columnConstraints>
+
+            <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Nombre Completo" styleClass="detail-label"/>
+                <Label fx:id="lblCustomerName" text="María José Rodríguez Pérez" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Cédula" styleClass="detail-label"/>
+                <Label fx:id="lblCustomerID" text="43.987.654" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <Label text="Teléfono" styleClass="detail-label"/>
+                <Label fx:id="lblCustomerPhone" text="321 456 7890" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                <Label text="Correo Electrónico" styleClass="detail-label"/>
+                <Label fx:id="lblCustomerEmail" text="maria.rodriguez@email.com" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                <Label text="Dirección" styleClass="detail-label"/>
+                <Label fx:id="lblCustomerAddress" text="Calle 50 # 45-32, Barrio Laureles, Medellín" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <Label text="Estrato" styleClass="detail-label"/>
+                <Label fx:id="lblStratum" text="4" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <Label text="Cliente Desde" styleClass="detail-label"/>
+                <Label fx:id="lblCustomerSince" text="Enero 2018" styleClass="detail-value"/>
+            </VBox>
+        </GridPane>
+    </VBox>
+
+    <!-- Services Section -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <Label text="Servicios Contratados" styleClass="section-title"/>
+
+        <GridPane hgap="20.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="33.33"/>
+                <ColumnConstraints percentWidth="33.33"/>
+                <ColumnConstraints percentWidth="33.33"/>
+            </columnConstraints>
+
+            <!-- Electricity Service -->
+            <VBox spacing="10.0" GridPane.columnIndex="0" styleClass="card-base" style="-fx-background-color: #E8F5E9;">
+                <padding>
+                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                </padding>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="⚡" style="-fx-font-size: 28px;"/>
+                    <Label text="Energía" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                </HBox>
+                <VBox spacing="5.0">
+                    <Label text="Contrato:" styleClass="detail-label"/>
+                    <Label text="EN-123456789" styleClass="detail-value"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Estado:" styleClass="detail-label"/>
+                    <Label text="Activo" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold;"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Consumo Mes Anterior:" styleClass="detail-label"/>
+                    <Label text="245 kWh" styleClass="detail-value"/>
+                </VBox>
+            </VBox>
+
+            <!-- Water Service -->
+            <VBox spacing="10.0" GridPane.columnIndex="1" styleClass="card-base" style="-fx-background-color: #E1F5FE;">
+                <padding>
+                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                </padding>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="💧" style="-fx-font-size: 28px;"/>
+                    <Label text="Agua" style="-fx-text-fill: #01579B; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                </HBox>
+                <VBox spacing="5.0">
+                    <Label text="Contrato:" styleClass="detail-label"/>
+                    <Label text="AG-987654321" styleClass="detail-value"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Estado:" styleClass="detail-label"/>
+                    <Label text="Activo" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold;"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Consumo Mes Anterior:" styleClass="detail-label"/>
+                    <Label text="18 m³" styleClass="detail-value"/>
+                </VBox>
+            </VBox>
+
+            <!-- Gas Service -->
+            <VBox spacing="10.0" GridPane.columnIndex="2" styleClass="card-base" style="-fx-background-color: #FFF3E0;">
+                <padding>
+                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                </padding>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label text="🔥" style="-fx-font-size: 28px;"/>
+                    <Label text="Gas" style="-fx-text-fill: #E65100; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                </HBox>
+                <VBox spacing="5.0">
+                    <Label text="Contrato:" styleClass="detail-label"/>
+                    <Label text="GS-456789123" styleClass="detail-value"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Estado:" styleClass="detail-label"/>
+                    <Label text="Activo" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold;"/>
+                </VBox>
+                <VBox spacing="5.0">
+                    <Label text="Consumo Mes Anterior:" styleClass="detail-label"/>
+                    <Label text="12 m³" styleClass="detail-value"/>
+                </VBox>
+            </VBox>
+        </GridPane>
+    </VBox>
+
+    <!-- Billing History -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <Label text="Historial de Facturación (Últimas 6 Facturas)" styleClass="section-title"/>
+
+        <TableView fx:id="tblBillingHistory" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <columns>
+                <TableColumn text="Fecha" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Servicio" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Período" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Consumo" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Valor" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Estado" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Fecha Pago" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+            </columns>
+
+            <placeholder>
+                <Label text="No hay facturas registradas" styleClass="text-muted"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+
+    <!-- PQRS History -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Historial de PQR" styleClass="section-title"/>
+            <Region/>
+            <Button text="Registrar Nueva PQR" styleClass="btn-success">
+                <padding>
+                    <Insets top="8.0" right="20.0" bottom="8.0" left="20.0"/>
+                </padding>
+            </Button>
+        </HBox>
+
+        <TableView fx:id="tblPQRHistory" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <columns>
+                <TableColumn text="Radicado" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Fecha" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Tipo" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Servicio" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Motivo" prefWidth="200" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Estado" prefWidth="120" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Responsable" prefWidth="150" style="-fx-alignment: CENTER-LEFT;"/>
+            </columns>
+            <placeholder>
+                <Label text="No hay PQR registradas" styleClass="text-muted"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefWidth="220"
+            styleClass="sidebar"
+            stylesheets="@Style.css"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController">
+
+    <children>
+        <ScrollPane fx:id="sidebarScroll" styleClass="scroll-base"
+                    AnchorPane.bottomAnchor="60.0"
+                    AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="120.0"
+                    fitToWidth="true">
+
+            <VBox spacing="3" styleClass="sidebar-menu">
+
+                <!-- Botón Inicio -->
+                <Button fx:id="btnDashboard" text="⌂  Inicio" styleClass="sidebar-button"
+                        onAction="#handleShowDashboard"/>
+
+                <Separator styleClass="sidebar-separator"/>
+
+                <!-- MÓDULO 1: Gestión Financiera y Contable -->
+                <VBox spacing="0">
+                    <Button fx:id="btnModuloFinanciero" text="▼  Gestión Financiera" styleClass="sidebar-module"
+                            onAction="#toggleModuloFinanciero"/>
+                    <VBox fx:id="vboxModuloFinanciero" spacing="2" managed="false" visible="false"
+                          styleClass="sidebar-submenu">
+                        <Button fx:id="btnControlPresupuestal" text="Control Presupuestal" styleClass="sidebar-subitem"
+                                onAction="#handleShowControlPresupuestal"/>
+                        <Button fx:id="btnEstadosFinancieros" text="Estados Financieros" styleClass="sidebar-subitem"
+                                onAction="#handleShowEstadosFinancieros"/>
+                        <Button fx:id="btnActivos" text="Ficha de Activo" styleClass="sidebar-subitem"
+                                onAction="#handleShowFichaActivo"/>
+                    </VBox>
+                </VBox>
+
+                <!-- MÓDULO 2: Gestión del Talento Humano -->
+                <VBox spacing="0">
+                    <Button fx:id="btnModuloTalento" text="▼  Talento Humano" styleClass="sidebar-module"
+                            onAction="#toggleModuloTalento"/>
+                    <VBox fx:id="vboxModuloTalento" spacing="2" managed="false" visible="false"
+                          styleClass="sidebar-submenu">
+                        <Button fx:id="btnGestionPersonal" text="Gestión de Personal" styleClass="sidebar-subitem"
+                                onAction="#handleShowGestionPersonal"/>
+                        <Button fx:id="btnReporteRRHH" text="Reporte de RRHH" styleClass="sidebar-subitem"
+                                onAction="#handleShowReporteRRHH"/>
+                        <Button fx:id="btnColillaPago" text="Colilla de Pago" styleClass="sidebar-subitem"
+                                onAction="#handleShowColillaPago"/>
+                        <Button fx:id="btnVacaciones" text="Solicitar Vacaciones" styleClass="sidebar-subitem"
+                                onAction="#handleShowVacaciones"/>
+                    </VBox>
+                </VBox>
+
+                <!-- MÓDULO 3: Gestión Comercial y de Clientes -->
+                <VBox spacing="0">
+                    <Button fx:id="btnModuloComercial" text="▼  Comercial y Clientes" styleClass="sidebar-module"
+                            onAction="#toggleModuloComercial"/>
+                    <VBox fx:id="vboxModuloComercial" spacing="2" managed="false" visible="false"
+                          styleClass="sidebar-submenu">
+                        <Button fx:id="btnGestionPQRS" text="Gestión de PQRS" styleClass="sidebar-subitem"
+                                onAction="#handleShowGestionPQRS"/>
+                        <Button fx:id="btnContratos" text="Contratos y Facturación" styleClass="sidebar-subitem"
+                                onAction="#handleShowContratos"/>
+                        <Button fx:id="btnPQR" text="Registrar PQR" styleClass="sidebar-subitem"
+                                onAction="#handleShowPQR"/>
+                        <Button fx:id="btnVista360" text="Vista 360 Cliente" styleClass="sidebar-subitem"
+                                onAction="#handleShowVista360"/>
+                    </VBox>
+                </VBox>
+
+                <!-- MÓDULO 4: Gestión de Proyectos y Planeación -->
+                <VBox spacing="0">
+                    <Button fx:id="btnModuloProyectos" text="▼  Proyectos" styleClass="sidebar-module"
+                            onAction="#toggleModuloProyectos"/>
+                    <VBox fx:id="vboxModuloProyectos" spacing="2" managed="false" visible="false"
+                          styleClass="sidebar-submenu">
+                        <Button fx:id="btnAsignacionRecursos" text="Asignación de Recursos" styleClass="sidebar-subitem"
+                                onAction="#handleShowAsignacionRecursos"/>
+                        <Button fx:id="btnControlAvance" text="Control de Avance" styleClass="sidebar-subitem"
+                                onAction="#handleShowControlAvance"/>
+                    </VBox>
+                </VBox>
+
+                <!-- MÓDULO 5: Gestión Documental y Archivo -->
+                <VBox spacing="0">
+                    <Button fx:id="btnModuloDocumental" text="▼  Documental" styleClass="sidebar-module"
+                            onAction="#toggleModuloDocumental"/>
+                    <VBox fx:id="vboxModuloDocumental" spacing="2" managed="false" visible="false"
+                          styleClass="sidebar-submenu">
+                        <Button fx:id="btnBusquedaDocumentos" text="Búsqueda de Documentos" styleClass="sidebar-subitem"
+                                onAction="#handleShowBusquedaDocumentos"/>
+                        <Button fx:id="btnControlVersiones" text="Control de Versiones" styleClass="sidebar-subitem"
+                                onAction="#handleShowControlVersiones"/>
+                    </VBox>
+                </VBox>
+
+                <!-- MÓDULO 6: I+D+i -->
+                <VBox spacing="0">
+                    <Button fx:id="btnModuloIDi" text="▼  I+D+i" styleClass="sidebar-module"
+                            onAction="#toggleModuloIDi"/>
+                    <VBox fx:id="vboxModuloIDi" spacing="2" managed="false" visible="false"
+                          styleClass="sidebar-submenu">
+                        <Button fx:id="btnBancoIdeas" text="Banco de Ideas" styleClass="sidebar-subitem"
+                                onAction="#handleShowBancoIdeas"/>
+                        <Button fx:id="btnMedicionImpacto" text="Medición de Impacto" styleClass="sidebar-subitem"
+                                onAction="#handleShowMedicionImpacto"/>
+                    </VBox>
+                </VBox>
+
+                <!-- MÓDULO 7: Gestión Ambiental -->
+                <VBox spacing="0">
+                    <Button fx:id="btnModuloAmbiental" text="▼  Ambiental" styleClass="sidebar-module"
+                            onAction="#toggleModuloAmbiental"/>
+                    <VBox fx:id="vboxModuloAmbiental" spacing="2" managed="false" visible="false"
+                          styleClass="sidebar-submenu">
+                        <Button fx:id="btnMonitoreoAmbiental" text="Monitoreo Ambiental" styleClass="sidebar-subitem"
+                                onAction="#handleShowMonitoreoAmbiental"/>
+                        <Button fx:id="btnGestionResiduos" text="Gestión de Residuos" styleClass="sidebar-subitem"
+                                onAction="#handleShowGestionResiduos"/>
+                    </VBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+
+        <!-- User profile section (arriba del sidebar) -->
+        <VBox alignment="CENTER" spacing="8"
+              AnchorPane.topAnchor="10.0"
+              AnchorPane.leftAnchor="10.0"
+              AnchorPane.rightAnchor="10.0">
+            <ImageView fitWidth="70" fitHeight="70" preserveRatio="true">
+                <image>
+                    <javafx.scene.image.Image url="@Epm-1.png"/>
+                </image>
+            </ImageView>
+            <Label fx:id="lblUserName" text="Usuario EPM" style="-fx-text-fill: white; -fx-font-size: 11px; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <!-- Bottom section: Cerrar Sesión -->
+        <Button fx:id="btnLogout" text="🚪 Cerrar Sesión" styleClass="sidebar-logout"
+                onAction="#handleShowLogin"
+                AnchorPane.bottomAnchor="10.0"
+                AnchorPane.leftAnchor="20.0"
+                AnchorPane.rightAnchor="20.0"/>
+
+    </children>
+</AnchorPane>

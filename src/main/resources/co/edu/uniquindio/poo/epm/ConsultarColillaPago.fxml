@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css"
+            fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+
+    <padding>
+        <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+    </padding>
+
+    <!-- Header with Module and View Name -->
+    <VBox spacing="5.0">
+        <Label text="Módulo de Gestión del Talento Humano" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Consultar Colilla de Pago" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <!-- Filter Section -->
+    <VBox spacing="15.0" styleClass="filter-section">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <Label text="Seleccione el período" styleClass="section-title"/>
+
+        <HBox spacing="15.0" alignment="CENTER_LEFT">
+            <VBox spacing="5.0">
+                <Label text="Mes" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbMonth" promptText="Seleccione mes" styleClass="form-combo" prefWidth="180">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Enero"/>
+                            <String fx:value="Febrero"/>
+                            <String fx:value="Marzo"/>
+                            <String fx:value="Abril"/>
+                            <String fx:value="Mayo"/>
+                            <String fx:value="Junio"/>
+                            <String fx:value="Julio"/>
+                            <String fx:value="Agosto"/>
+                            <String fx:value="Septiembre"/>
+                            <String fx:value="Octubre"/>
+                            <String fx:value="Noviembre"/>
+                            <String fx:value="Diciembre"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label text="Año" styleClass="detail-label"/>
+                <ComboBox fx:id="cmbYear" promptText="Seleccione año" styleClass="form-combo" prefWidth="140">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="2025"/>
+                            <String fx:value="2024"/>
+                            <String fx:value="2023"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <Region/>
+
+            <Button text="Consultar" styleClass="btn-primary">
+                <padding>
+                    <Insets top="10.0" right="25.0" bottom="10.0" left="25.0"/>
+                </padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+    <!-- Payment Details Section -->
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Detalles de Pago - Noviembre 2025" styleClass="section-title"/>
+            <Region/>
+            <Label text="Código: COL-2025-11-0001" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;"/>
+        </HBox>
+
+        <Separator/>
+
+        <!-- Employee Info -->
+        <GridPane hgap="30.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+                <ColumnConstraints percentWidth="25.0"/>
+            </columnConstraints>
+
+            <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Empleado" styleClass="detail-label"/>
+                <Label fx:id="lblEmployeeName" text="Juan Pérez García" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Cédula" styleClass="detail-label"/>
+                <Label fx:id="lblEmployeeID" text="1.234.567.890" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <Label text="Cargo" styleClass="detail-label"/>
+                <Label fx:id="lblPosition" text="Analista de Sistemas" styleClass="detail-value"/>
+            </VBox>
+
+            <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                <Label text="Área" styleClass="detail-label"/>
+                <Label fx:id="lblDepartment" text="Tecnología" styleClass="detail-value"/>
+            </VBox>
+        </GridPane>
+
+        <Separator/>
+
+        <!-- Payment Summary -->
+        <Label text="Resumen de Pago" styleClass="section-title" style="-fx-font-size: 16px;"/>
+
+        <GridPane hgap="30.0" vgap="12.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0"/>
+                <ColumnConstraints percentWidth="50.0"/>
+            </columnConstraints>
+
+            <!-- Devengado -->
+            <VBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="card-base"
+                  style="-fx-background-color: #E8F5E9;">
+                <padding>
+                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                </padding>
+                <Label text="Devengado" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Salario Básico" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$4.500.000" styleClass="detail-value"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Auxilio de Transporte" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$162.000" styleClass="detail-value"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Bonificación" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$300.000" styleClass="detail-value"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Horas Extras" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$150.000" styleClass="detail-value"/>
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Total Devengado" styleClass="total-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotalEarned" text="\$5.112.000" styleClass="total-value"/>
+                </HBox>
+            </VBox>
+
+            <!-- Deducciones -->
+            <VBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="card-base"
+                  style="-fx-background-color: #FFEBEE;">
+                <padding>
+                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                </padding>
+                <Label text="Deducciones" style="-fx-text-fill: #C62828; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Salud (4%)" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$180.000" styleClass="detail-value"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Pensión (4%)" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$180.000" styleClass="detail-value"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Fondo de Solidaridad" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$45.000" styleClass="detail-value"/>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Libranza" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$200.000" styleClass="detail-value"/>
+                </HBox>
+
+                <Separator/>
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Total Deducciones" style="-fx-text-fill: #C62828; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotalDeductions" text="\$605.000" style="-fx-text-fill: #C62828; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+        </GridPane>
+
+        <Separator/>
+
+        <!-- Net to Pay -->
+        <HBox alignment="CENTER" spacing="15.0" styleClass="card-base"
+              style="-fx-background-color: linear-gradient(to right, #1B5E20, #2E7D32); -fx-padding: 20;">
+            <Label text="NETO A PAGAR:" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label fx:id="lblNetPay" text="\$4.507.000" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+        </HBox>
+
+        <!-- Action Buttons -->
+        <HBox spacing="15.0" alignment="CENTER">
+            <Button text="Descargar PDF" styleClass="btn-primary">
+                <padding>
+                    <Insets top="12.0" right="30.0" bottom="12.0" left="30.0"/>
+                </padding>
+            </Button>
+
+            <Button text="Enviar por Correo" styleClass="btn-secondary">
+                <padding>
+                    <Insets top="12.0" right="30.0" bottom="12.0" left="30.0"/>
+                </padding>
+            </Button>
+        </HBox>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

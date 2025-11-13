@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<!-- The ScrollPane is the root element -->
+<ScrollPane fitToWidth="true" fitToHeight="true" styleClass="login-scroll" pannable="true"
+            stylesheets="@Style.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController">
+
+   <!-- This StackPane will now force itself to fill the ScrollPane's width and have the background color -->
+   <StackPane alignment="CENTER" maxWidth="Infinity" prefWidth="Infinity" styleClass="login-background-pane">
+
+      <VBox styleClass="login-container" alignment="CENTER" spacing="25">
+
+         <!-- Wrapper HBox to correctly center the logo circle -->
+         <HBox alignment="CENTER">
+            <StackPane styleClass="logo-circle">
+               <ImageView fitWidth="100" fitHeight="100" preserveRatio="true">
+                  <image>
+                     <javafx.scene.image.Image url="@Epm-1.png"/>
+                  </image>
+               </ImageView>
+            </StackPane>
+         </HBox>
+
+         <!-- Welcome Text -->
+         <VBox alignment="CENTER" spacing="5">
+            <Label text="¡Bienvenido a EPM!" styleClass="welcome-text"/>
+            <Label text="Ingresa tus credenciales para continuar" styleClass="welcome-text"/>
+         </VBox>
+
+         <!-- Form Fields -->
+         <VBox spacing="20" styleClass="form-container">
+
+            <!-- Email/Username Field -->
+            <VBox spacing="5">
+               <Label fx:id="lblEmailFloat" text="USUARIO" styleClass="floating-label-top"/>
+               <StackPane styleClass="input-container" prefWidth="400" minWidth="350">
+                  <TextField fx:id="txtEmail" styleClass="modern-input" promptText="USUARIO O CORREO ELECTRÓNICO" prefWidth="400" minWidth="350"/>
+               </StackPane>
+            </VBox>
+
+            <!-- Password Field -->
+            <VBox spacing="5">
+               <Label fx:id="lblPasswordFloat" text="CONTRASEÑA" styleClass="floating-label-top"/>
+               <HBox spacing="10" alignment="CENTER_LEFT">
+                  <StackPane styleClass="input-container" prefWidth="400" minWidth="350">
+                     <PasswordField fx:id="txtPassword" styleClass="modern-input" promptText="CONTRASEÑA" prefWidth="400" minWidth="350"/>
+                     <TextField fx:id="txtPasswordVisible" styleClass="modern-input" promptText="CONTRASEÑA" visible="false" managed="false" prefWidth="400" minWidth="350"/>
+                  </StackPane>
+               </HBox>
+            </VBox>
+
+            <!-- Keep me signed in -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+               <CheckBox fx:id="chkKeepSignedIn" styleClass="modern-checkbox"/>
+               <Label text="Mantenerme conectado" styleClass="checkbox-label"/>
+            </HBox>
+
+            <!-- Sign In Button -->
+            <Button fx:id="btnLogin" text="INICIAR SESIÓN" styleClass="signin-button"
+                    onAction="#handleLogin"/>
+
+            <!-- Error Label -->
+            <Label fx:id="lblError" styleClass="error-label" visible="false" managed="false"/>
+
+            <!-- Forgot Password -->
+            <Label fx:id="lblForgotPassword" text="¿Olvidaste tu contraseña?" styleClass="link-label"/>
+
+            <!-- Divider -->
+            <HBox alignment="CENTER" spacing="10">
+               <Separator styleClass="divider"/>
+               <Label text="o" styleClass="divider-text"/>
+               <Separator styleClass="divider"/>
+            </HBox>
+
+            <!-- SSO Sign In -->
+            <Label fx:id="googleLoginLabel" text="Iniciar Sesión con SSO Empresarial" styleClass="google-link"/>
+
+         </VBox>
+
+         <!-- Espaciado inferior para asegurar scroll -->
+         <VBox prefHeight="50"/>
+
+      </VBox>
+   </StackPane>
+</ScrollPane>

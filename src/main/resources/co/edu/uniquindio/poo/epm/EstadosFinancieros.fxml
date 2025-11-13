@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css"
+            fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+    <padding>
+        <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+    </padding>
+
+    <VBox spacing="5.0">
+        <Label text="Módulo de Gestión Financiera y Contable" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Generación de Estados Financieros" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <HBox spacing="15.0" alignment="CENTER_LEFT" styleClass="filter-section">
+        <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+        <VBox spacing="5.0">
+            <Label text="Período/Fecha" styleClass="detail-label"/>
+            <ComboBox fx:id="cmbPeriod" promptText="Seleccione período" styleClass="form-combo" prefWidth="200">
+                <items>
+                    <javafx.collections.FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Noviembre 2025"/>
+                        <String fx:value="Octubre 2025"/>
+                        <String fx:value="Q4 2025"/>
+                        <String fx:value="Año 2025"/>
+                    </javafx.collections.FXCollections>
+                </items>
+            </ComboBox>
+        </VBox>
+        <Button text="Generar" styleClass="btn-primary" prefHeight="40">
+            <padding><Insets top="10.0" right="30.0" bottom="10.0" left="30.0"/></padding>
+        </Button>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Exportar PDF" styleClass="btn-success">
+            <padding><Insets top="10.0" right="20.0" bottom="10.0" left="20.0"/></padding>
+        </Button>
+    </HBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Balance General" styleClass="section-title"/>
+        <TableView fx:id="tblBalanceSheet" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <placeholder>
+                <Label text="No hay datos disponibles" styleClass="text-muted"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+
+    <GridPane hgap="20.0" vgap="20.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="50.0"/>
+            <ColumnConstraints percentWidth="50.0"/>
+        </columnConstraints>
+        <VBox spacing="15.0" GridPane.columnIndex="0" styleClass="card-base" style="-fx-background-color: #E8F5E9;">
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+            <Label text="Activos" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+            <VBox spacing="10.0">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Activo Corriente:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$1,250M" styleClass="detail-value"/>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Activo No Corriente:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$3,750M" styleClass="detail-value"/>
+                </HBox>
+                <Separator/>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="TOTAL ACTIVOS:" styleClass="total-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$5,000M" styleClass="total-value"/>
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <VBox spacing="15.0" GridPane.columnIndex="1" styleClass="card-base" style="-fx-background-color: #E1F5FE;">
+            <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+            <Label text="Pasivo y Patrimonio" style="-fx-text-fill: #01579B; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+            <VBox spacing="10.0">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Pasivo Corriente:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$800M" styleClass="detail-value"/>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Pasivo No Corriente:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$1,200M" styleClass="detail-value"/>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Patrimonio:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$3,000M" styleClass="detail-value"/>
+                </HBox>
+                <Separator/>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="TOTAL PASIVO + PATRIMONIO:" styleClass="total-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$5,000M" styleClass="total-value"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </GridPane>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Estado de Resultados (P&amp;G)" styleClass="section-title"/>
+        <GridPane hgap="30.0" vgap="12.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0"/>
+                <ColumnConstraints percentWidth="50.0"/>
+            </columnConstraints>
+            <VBox spacing="10.0" GridPane.columnIndex="0">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Ingresos Operacionales:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$2,500M" styleClass="detail-value" style="-fx-text-fill: #43A047;"/>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Costos y Gastos:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$1,800M" styleClass="detail-value" style="-fx-text-fill: #dc3545;"/>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Utilidad Operacional:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$700M" styleClass="detail-value" style="-fx-text-fill: #1B5E20; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+            <VBox spacing="10.0" GridPane.columnIndex="1">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Ingresos No Operacionales:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$120M" styleClass="detail-value"/>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Gastos No Operacionales:" styleClass="detail-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$50M" styleClass="detail-value"/>
+                </HBox>
+                <Separator/>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="UTILIDAD NETA:" styleClass="total-label" style="-fx-font-size: 18px;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="\$770M" styleClass="total-value" style="-fx-font-size: 22px;"/>
+                </HBox>
+            </VBox>
+        </GridPane>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

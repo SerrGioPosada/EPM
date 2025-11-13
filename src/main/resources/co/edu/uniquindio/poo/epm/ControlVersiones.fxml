@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.String?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController"
+            stylesheets="@Style.css" fitToWidth="true" fitToHeight="true" styleClass="scroll-pane">
+    <VBox spacing="20.0" styleClass="content-area">
+    <padding><Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/></padding>
+
+    <VBox spacing="5.0">
+        <Label text="Módulo de Gestión Documental y Archivo" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-weight: 600;"/>
+        <Label text="Digitalización y Control de Versiones" styleClass="page-title" style="-fx-font-size: 28px;"/>
+    </VBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <Label text="Progreso de Digitalización por Área" styleClass="section-title"/>
+        <Separator/>
+        <BarChart fx:id="chartDigitalization" prefHeight="350" legendVisible="true"
+                  style="-fx-background-color: white; -fx-background-radius: 8;">
+            <xAxis>
+                <CategoryAxis label="Área" side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Porcentaje Digitalizado (%)" side="LEFT" upperBound="100"/>
+            </yAxis>
+        </BarChart>
+    </VBox>
+
+    <HBox spacing="15.0" alignment="CENTER_LEFT" styleClass="filter-section">
+        <padding><Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/></padding>
+        <VBox spacing="5.0">
+            <Label text="Área" styleClass="detail-label"/>
+            <ComboBox fx:id="cmbArea" promptText="Seleccione área" styleClass="form-combo" prefWidth="200">
+                <items>
+                    <javafx.collections.FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Financiera"/>
+                        <String fx:value="Recursos Humanos"/>
+                        <String fx:value="Proyectos"/>
+                        <String fx:value="Todas"/>
+                    </javafx.collections.FXCollections>
+                </items>
+            </ComboBox>
+        </VBox>
+        <Button text="Marcar Lote como Escaneado" styleClass="btn-success" prefHeight="40">
+            <padding><Insets top="10.0" right="30.0" bottom="10.0" left="30.0"/></padding>
+        </Button>
+    </HBox>
+
+    <VBox spacing="15.0" styleClass="card-base">
+        <padding><Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/></padding>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Control de Versiones de Documentos" styleClass="section-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Restaurar Versión" styleClass="btn-secondary">
+                <padding><Insets top="8.0" right="20.0" bottom="8.0" left="20.0"/></padding>
+            </Button>
+        </HBox>
+        <TableView fx:id="tblVersions" prefHeight="450" minHeight="450" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-size: 14px;">
+            <columns>
+                <TableColumn text="Documento" prefWidth="250" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Versión" prefWidth="80" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Fecha Modificación" prefWidth="140" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Autor del Cambio" prefWidth="180" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Comentario" prefWidth="250" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn text="Tamaño" prefWidth="100" style="-fx-alignment: CENTER-LEFT;"/>
+            </columns>
+            <placeholder><Label text="No hay versiones registradas" styleClass="text-muted"/></placeholder>
+        </TableView>
+    </VBox>
+
+    </VBox>
+</ScrollPane>

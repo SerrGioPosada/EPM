@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="400.0" minWidth="700.0" prefHeight="400.0" prefWidth="700.0"
+            styleClass="root-pane"
+            stylesheets="@Style.css"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.epm.HelloController">
+
+   <children>
+      <BorderPane fx:id="rootPane" prefHeight="400.0" prefWidth="700.0" styleClass="main-pane"
+                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+         <!-- TOP HEADER -->
+         <top>
+            <AnchorPane prefHeight="65.0" styleClass="header-pane" BorderPane.alignment="CENTER">
+               <children>
+
+                  <!-- Green bar at the very top -->
+                  <AnchorPane prefHeight="25.0" styleClass="top-bar"
+                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <!-- EPM Logo/Text -->
+                        <HBox spacing="8" alignment="CENTER_LEFT" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="2.0">
+                           <children>
+                              <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                                 <image>
+                                    <javafx.scene.image.Image url="@Epm-1.png"/>
+                                 </image>
+                              </ImageView>
+                              <Label text="EPM - Empresas Públicas de Medellín" textFill="white">
+                                 <font><Font name="System Bold" size="11.0" /></font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+
+
+                  <!-- Menu toggle button (hamburger menu) -->
+                  <Label fx:id="lblMenu" layoutX="13.0" layoutY="36.0" styleClass="menu-label"
+                         text="MENÚ" textFill="#b2b2b2"
+                         onMouseClicked="#handleToggleSidebar"
+                         style="-fx-cursor: hand;"
+                         AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="36.0">
+                     <font><Font name="System Bold" size="14.0" /></font>
+                     <graphic>
+                        <Label text="☰" style="-fx-font-size: 20px;"/>
+                     </graphic>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+
+         <!-- LEFT SIDEBAR (will be loaded dynamically) -->
+
+         <!-- CENTER PANE: StackPane to center content automatically -->
+         <center>
+            <StackPane fx:id="paneIndex" BorderPane.alignment="CENTER" />
+         </center>
+
+      </BorderPane>
+   </children>
+</AnchorPane>
